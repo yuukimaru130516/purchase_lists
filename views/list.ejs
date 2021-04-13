@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='/stylesheets/liststyle.css' />
+  <title>一覧表示</title>
+</head>
+<body>
+  <header>
+    <h2>一覧表示</h2>
+  </header>
+  <ul>
+    <% lists.forEach((item) => { %>
+      <li>
+        <%= item.id %>
+        <%= item.name %>
+      </li>
+    <% }); %>
+  </ul>
+  <a href="/add">新しく追加する</a>
+</body>
+</html>
