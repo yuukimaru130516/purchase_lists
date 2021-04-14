@@ -24,6 +24,7 @@ app.use('/users', usersRouter);
 app.use('/list', indexRouter );
 app.use('/add', indexRouter);
 app.use('/create', indexRouter);
+app.use('/delete/:id', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -2,3 +2,17 @@
   background-color: darkgray;
   font-family: monospace;
 }
+
+body {
+  width: 300px;
+}
+
+.list {
+  font-size: 18px;
+  clear: right;
+}
+
+.button { 
+  padding-right: 100px;
+  float: right;
+}

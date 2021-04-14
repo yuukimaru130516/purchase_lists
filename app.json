@@ -1,0 +1,7 @@
+{
+  "name": "purchase-lists",
+  "description": "中山家の買い物メモ",
+  "logo": "",
+  "keywords": ["node"],
+  "image": "heroku/nodejs"
+}

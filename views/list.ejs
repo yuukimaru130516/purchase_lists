@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='/stylesheets/liststyle.css' />
+  <link rel='icon' href='/images/favicon.ico'>
   <title>一覧表示</title>
 </head>
 <body>
@@ -13,12 +14,16 @@
   </header>
   <ul>
     <% lists.forEach((item) => { %>
-      <li>
-        <%= item.id %>
+      <li class="list">
         <%= item.name %>
+        <!--  削除機能の実装 -->
+        <form action="/delete/<%= item.id %>" method="POST" class="button">
+          <input type="submit" value="削除">
+        </form>
       </li>
     <% }); %>
   </ul>
   <a href="/add">新しく追加する</a>
+  <a href="/">ホームに戻る</a>
 </body>
 </html>

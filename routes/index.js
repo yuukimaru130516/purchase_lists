@@ -3,6 +3,8 @@ var router = express.Router();
 
 const mysql = require('mysql');
 
+
+//　TODO パスワードのハッシュ化
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'yuukimaru',
@@ -26,7 +28,7 @@ router.get('/list', (req, res) => {
 
 router.get('/add', (req, res) => {
   res.render('add.ejs');
-})
+});
 
 router.post('/create', (req, res) => {
   connection.query(
@@ -36,6 +38,16 @@ router.post('/create', (req, res) => {
       res.redirect('/list');
     }
   );
-})
+});
+
+router.post('/delete/:id', (req, res) => {
+  connection.query(
+    'DELETE FROM lists WHERE id = ?',
+    [req.params.id],
+    (error, results) => {
+      res.redirect('/list');
+    }
+  );
+});
 
 module.exports = router;

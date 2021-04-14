@@ -3,6 +3,7 @@
   <head>
     <title>中山家の買い物メモ</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='icon' href='/images/favicon.ico'>
   </head>
   <body>
     <header>
@@ -13,12 +14,15 @@
     </header>
 
     <div class="container">
-      <p>サーバを通してデータベースに保存しているため、<br>
+      <p class="firstp">サーバを通してデータベースに保存しているため、<br>
         メモの内容をリアルタイムで共有することができます。<br>
         また、レスポンシブデザインにも対応しているためレイアウト崩れがおきません（多分）</p>
 
-      <p>このサイトはNode.jsを用いて作られています。また、DBにはMySQLが使われております。<br>
-      今後は誰が登録したかを分かるようにしたいですが、OAuth認証と脆弱性対策が面倒なので当分先になります</p>
+      <p>使用言語：Node.js、DB：MySQL<br><br>
+      今後の課題<br>
+      OAuth認証、脆弱性対策、テーブル表示<br><br>
+      確認されている脆弱性<br>
+      SQL インジェクション、クロスサイト・スクリプティング (XSS)、クロスサイト・リクエストフォージェリ (CSRF)</p>    
       <a href="/list" class="btn btn-flat"><span>一覧表示！</span></a>
     </div>
 
