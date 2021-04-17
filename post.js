@@ -2,11 +2,6 @@ const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
   process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost/purchase_list',
   {
-    dialect: 'postgres',
-    protocol: 'postgres',
-    dialectOptions: {
-        ssl: true
-    },
     logging: false
   }
 );
