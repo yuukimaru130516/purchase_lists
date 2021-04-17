@@ -13,9 +13,9 @@
     <h2>一覧表示</h2>
   </header>
   <ul>
-    <% lists.forEach((item) => { %>
+    <% items.forEach((item) => { %>
       <li class="list">
-        <%= item.name %>
+        <%= item.content %>
         <!--  削除機能の実装 -->
         <form action="/delete/<%= item.id %>" method="POST" class="button">
           <input type="submit" value="削除">

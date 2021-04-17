@@ -1,16 +1,6 @@
-var express = require('express');
-var router = express.Router();
-
-const mysql = require('mysql');
-
-
-//　TODO パスワードのハッシュ化
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'yuukimaru',
-  password: '280Qi4Xx',
-  database: 'purchase_list'
-});
+const express = require('express');
+const router = express.Router();
+const Post = require('../post');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,12 +8,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/list', (req, res) => {
-  connection.query(
-    'SELECT * FROM lists',
-    (error, results) => {
-      res.render('list.ejs', {lists: results});     
-    }
-  );
+  Post.findAll().then((items) => {
+    res.render('list.ejs', {items: items})
+  });
 });
 
 router.get('/add', (req, res) => {
@@ -31,23 +18,32 @@ router.get('/add', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-  connection.query(
-    'INSERT INTO lists(name) VALUE(?)',
-    [req.body.itemName],
-    (error, results) => {
+  Post.create({
+    content: req.body.content
+    }).then(() => {
       res.redirect('/list');
-    }
-  );
-});
+      });
+    });
+
+/**
+ * レコード削除
+ * @param {*} query 
+ * @param {*} callback 
+ */
 
 router.post('/delete/:id', (req, res) => {
-  connection.query(
-    'DELETE FROM lists WHERE id = ?',
-    [req.params.id],
-    (error, results) => {
-      res.redirect('/list');
+  const filter = {
+    where: {
+      id: req.params.id
     }
-  );
+  };
+
+  Post.destroy(filter).then(() => {
+    res.redirect('/list');
+  })
+  .catch((err) => {
+    res.render('error.ejs');
+  });
 });
 
 module.exports = router;
