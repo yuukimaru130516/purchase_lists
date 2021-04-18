@@ -12,6 +12,7 @@ const sequelize = new Sequelize(
 });
 
 
+
 const Post = sequelize.define(
   'purchase_list',
   {
