@@ -2,9 +2,14 @@ const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
   process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost/purchase_list',
   {
-    logging: false
+    logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false 
+      }
   }
-);
+});
 
 
 const Post = sequelize.define(
